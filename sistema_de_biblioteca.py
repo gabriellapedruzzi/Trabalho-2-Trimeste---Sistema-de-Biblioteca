@@ -10,7 +10,7 @@ usuarios = {
 
 def cadastrar_livros():
     while True:
-        escolha = input("você deseja cadastrar um livro novo(s/n): ")
+        escolha = input("você deseja cadastrar um livro novo(s/n): ").lower
 
         if escolha == "s":
             titulo = input("Insira o titulo do livro: ")
@@ -30,7 +30,7 @@ def cadastrar_livros():
 
 def cadastrar_usuarios(usuarios):
     while True:
-        alternativa = input("Você deseja cadastrar um novo usuario(s/n): ")
+        alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower
         if alternativa == "s":
             email = input("Insira seu email: ")
             senha = input("insira sea senha: ")
@@ -48,7 +48,7 @@ def mostrar_usuarios(usuarios):
         senha = usuarios[usuario]
         print(f"email: {email} \t senha: {senha}")
 
-def emprestimo_devolução():
+def emprestimo_devoluçao():
     pass
 
 def consultar_livros(livros):
@@ -76,7 +76,7 @@ while True:
     elif opcao == "2":
         cadastrar_usuarios(usuarios)
     elif opcao == "3":
-        emprestimo_devolução()
+        emprestimo_devoluçao()
     elif opcao == "4":
         consultar_livros(livros)
     elif opcao == "5":
