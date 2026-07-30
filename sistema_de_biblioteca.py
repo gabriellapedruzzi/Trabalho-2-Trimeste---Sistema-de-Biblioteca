@@ -1,4 +1,12 @@
-livros = [["Uma janela sombria", "Rachel Gillig", "978-65-85348-55-3", 1 ], ["Mistborn", "Brandon Sanderson", "978-65-81339-18-0", 1]]
+livros = [
+    ["Uma janela sombria", "Rachel Gillig", "978-65-85348-55-3", 1 ],
+    ["Mistborn", "Brandon Sanderson", "978-65-81339-18-0", 1]
+]
+
+usuarios = {
+    "gabi@gmail.com": "05062010",
+    "ademar@gmail.com": "ademar123"
+}
 
 def cadastrar_livros():
     quantidade = 0
@@ -18,16 +26,30 @@ def cadastrar_livros():
         elif escolha == "n":
             break
         else:
-            print("Insira S ou N")
+            print("Insira s ou n")
 
 
-def cadastrar_usuarios():
-    pass
+def cadastrar_usuarios(usuarios):
+    while True:
+        alternativa = input("Você deseja cadastrar um novo usuario(s/n): ")
+        if alternativa == "s":
+            email = input("Insira seu email: ")
+            senha = input("insira sea senha: ")
+
+            usuarios[email] = senha
+            print(usuarios)
+        elif alternativa == "n":
+            break
+        else:
+            print("insira s ou n")
+
 def emprestimo_devolução():
     pass
+
 def consultar_livros(livros):
     for livro in range(len(livros)):
         print(f"Titulo: {livros[livro][0]} \t autor(a): {livros[livro][1]} \t Codigo ISBN: {livros[livro][2]} \t Quantidade: {livros[livro][3]}")
+
 def relatorio():
     pass
 
@@ -46,7 +68,7 @@ while True:
     if opcao == "1":
         cadastrar_livros()
     elif opcao == "2":
-        cadastrar_usuarios()
+        cadastrar_usuarios(usuarios)
     elif opcao == "3":
         emprestimo_devolução()
     elif opcao == "4":
