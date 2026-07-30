@@ -43,6 +43,12 @@ def cadastrar_usuarios(usuarios):
         else:
             print("insira s ou n")
 
+def mostrar_usuarios(usuarios):
+    for usuario in usuarios:
+        email = usuario
+        senha = usuarios[usuario]
+        print(f"email: {email} \t senha: {senha}")
+
 def emprestimo_devolução():
     pass
 
@@ -59,7 +65,8 @@ while True:
         2 - Cadastrar um Usuario
         3 - Emprestimo ou devolução de um livro
         4 - Consultar livros disponiveis
-        5 - Relatorio de emprstimo
+        5 - consultar usuarios cadastrados
+        6 - Relatorio de emprstimo
         0 - Fechar sistema
     """)
 
@@ -74,6 +81,8 @@ while True:
     elif opcao == "4":
         consultar_livros(livros)
     elif opcao == "5":
+        mostrar_usuarios(usuarios)
+    elif opcao == "6":
         relatorio()
     elif opcao == "0":
         break
