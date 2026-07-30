@@ -1,4 +1,4 @@
-livros = list()
+livros = [["Uma janela sombria", "Rachel Gillig", "978-65-85348-55-3", 1 ], ["Mistborn", "Brandon Sanderson", "978-65-81339-18-0", 1]]
 
 def cadastrar_livros():
     quantidade = 0
@@ -25,8 +25,9 @@ def cadastrar_usuarios():
     pass
 def emprestimo_devolução():
     pass
-def consultar_livros():
-    pass
+def consultar_livros(livros):
+    for livro in range(len(livros)):
+        print(f"Titulo: {livros[livro][0]} \t autor(a): {livros[livro][1]} \t Codigo ISBN: {livros[livro][2]} \t Quantidade: {livros[livro][3]}")
 def relatorio():
     pass
 
@@ -49,7 +50,7 @@ while True:
     elif opcao == "3":
         emprestimo_devolução()
     elif opcao == "4":
-        consultar_livros()
+        consultar_livros(livros)
     elif opcao == "5":
         relatorio()
     elif opcao == "0":
