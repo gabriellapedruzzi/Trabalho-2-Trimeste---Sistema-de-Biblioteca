@@ -9,7 +9,6 @@ usuarios = {
 }
 
 def cadastrar_livros():
-    quantidade = 0
     while True:
         escolha = input("você deseja cadastrar um livro novo(s/n): ")
 
@@ -17,7 +16,7 @@ def cadastrar_livros():
             titulo = input("Insira o titulo do livro: ")
             autor = input("Insira o nome do autor do livro: ")
             codigo = input("Insira o codigo ISBN do livro: ")
-            quantidade += 1
+            quantidade = input("Insira a quantidade de livros")
             
             novo_livro = [titulo, autor, codigo, quantidade]
             livros.append(novo_livro)
