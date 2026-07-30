@@ -1,5 +1,26 @@
+livros = list()
+
 def cadastrar_livros():
-    print(111)
+    quantidade = 0
+    while True:
+        escolha = input("você deseja cadastrar um livro novo(s/n): ")
+
+        if escolha == "s":
+            titulo = input("Insira o titulo do livro: ")
+            autor = input("Insira o nome do autor do livro: ")
+            codigo = input("Insira o codigo ISBN do livro: ")
+            quantidade += 1
+            
+            novo_livro = [titulo, autor, codigo, quantidade]
+            livros.append(novo_livro)
+            print(novo_livro)
+            print(livros)
+        elif escolha == "n":
+            break
+        else:
+            print("Insira S ou N")
+
+
 def cadastrar_usuarios():
     pass
 def emprestimo_devolução():
