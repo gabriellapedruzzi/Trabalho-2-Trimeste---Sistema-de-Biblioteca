@@ -1,3 +1,5 @@
+import os
+
 livros = [
     {
         "titulo": "Uma janela sombria",
@@ -18,6 +20,10 @@ usuarios = {
     "ademar@gmail.com": "ademar123"
 }
 
+
+def limpar_terminal():
+    os.system("cls")
+
 def cadastrar_livros():
     while True:
         escolha = input("você deseja cadastrar um livro novo(s/n): ").lower()
@@ -35,9 +41,8 @@ def cadastrar_livros():
             "quantidade": quantidade
             }
             livros.append(novo_livro)
-            print(novo_livro)
-            print(livros)
         elif escolha == "n" or escolha == "não" or escolha == "nao":
+            limpar_terminal()
             break
         else:
             print("Insira s ou n")
@@ -48,20 +53,20 @@ def cadastrar_usuarios(usuarios):
         alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
         if alternativa == "s" or alternativa == "sim":
             email = input("Insira seu email: ")
-            senha = input("insira sua senha: ")
+            senha = input("Insira sua senha: ")
 
             usuarios[email] = senha
-            print(usuarios)
         elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
+            limpar_terminal()
             break
         else:
-            print("insira s ou n")
+            print("Insira s ou n")
 
 def mostrar_usuarios(usuarios):
     for usuario in usuarios:
         email = usuario
         senha = usuarios[usuario]
-        print(f"email: {email} \t senha: {senha}")
+        print(f"email: {email:<25} senha: {senha}")
 
 def emprestimo_devolucao():
     pass
@@ -106,4 +111,4 @@ while True:
     elif opcao == "0":
         break
     else:
-        print("insira uma das opções")
+        print("Insira uma das opções")
