@@ -125,7 +125,7 @@ def cadastrar_artigo():
             if escolha == "s" or escolha == "sim":
                 id_artigo = int(input("Insira o ID do artigo: "))
                 titulo = input("Insira o titulo do artigo: ")
-                autor = input("Insira o nome do autores do artigo: ")
+                autor = input("Insira o nome dos autores do artigo: ")
                 palavras_chave = input("Insira as palavras chaves: ")
                 publicacao = input("Insira a data de publicação: ")
                 quantidade = int(input("Insira a quantidade de artigos: "))
@@ -153,6 +153,10 @@ def mostrar_usuarios(usuarios):
         senha = usuarios[usuario]
         print(f"email: {email:<25} senha: {senha}")
 
+    print()
+    input("Pressione Enter para voltar para o menu")
+    limpar_terminal()
+
 def emprestimo_devolucao():
     pass
 
@@ -163,7 +167,7 @@ def consultar_acervo(livros,revistas,artigos):
         print(
             f"° Título: {livro['titulo']:<25}"
             f"Autor(a): {livro['autor']:<30}"
-            f"Genero Literario: {livro['genero']:<20}"
+            f"Gênero Literario: {livro['genero']:<20}"
             f"Codigo ISBN: {livro['codigo']:<27}"
             f"Quantidade: {livro['quantidade']}"
     )
@@ -206,13 +210,13 @@ while True:
     print("""
                 -=-=-=-=MENU=-=-=-=-
         1 - Cadastrar um livro
-        2 - Cadastrar um Usuario
+        2 - Cadastrar um Usuário
         3 - Cadastrar revista
-        4 - Cadastrar artigo cíentifico
+        4 - Cadastrar artigo científico
         5 - Emprestimo ou devolução de um livro
         6 - Consultar acervo da biblioteca
         7 - Consultar usuarios cadastrados
-        8 - Relatorio de emprstimo
+        8 - Relatorio de empréstimo
         0 - Fechar sistema
     """)
 
@@ -235,6 +239,7 @@ while True:
     elif opcao == "8":
         relatorio()
     elif opcao == "0":
+        limpar_terminal()
         break
     else:
         print("Insira uma das opções")
