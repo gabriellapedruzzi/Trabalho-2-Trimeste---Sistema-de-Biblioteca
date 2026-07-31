@@ -1,6 +1,16 @@
 livros = [
-    ["Uma janela sombria", "Rachel Gillig", "978-65-85348-55-3", 3 ],
-    ["Mistborn", "Brandon Sanderson", "978-65-81339-18-0", 5]
+    {
+        "titulo": "Uma janela sombria",
+        "autor": "Rachel Gillig",
+        "codigo": "978-65-85348-55-3",
+        "quantidade": 3
+    },
+    {
+        "titulo": "Mistborn",
+        "autor": "Brandon Sanderson",
+        "codigo": "978-65-81339-18-0",
+        "quantidade": 5
+    }
 ]
 
 usuarios = {
@@ -18,7 +28,12 @@ def cadastrar_livros():
             codigo = input("Insira o codigo ISBN do livro: ")
             quantidade = int(input("Insira a quantidade de livros"))
             
-            novo_livro = [titulo, autor, codigo, quantidade]
+            novo_livro = {
+            "titulo": titulo,
+            "autor": autor,
+            "codigo": codigo,
+            "quantidade": quantidade
+            }
             livros.append(novo_livro)
             print(novo_livro)
             print(livros)
@@ -52,9 +67,13 @@ def emprestimo_devolucao():
     pass
 
 def consultar_livros(livros):
-    for livro in range(len(livros)):
-        print(f"Titulo: {livros[livro][0]} \t autor(a): {livros[livro][1]} \t Codigo ISBN: {livros[livro][2]} \t Quantidade: {livros[livro][3]}")
-
+    for livro in livros:
+        print(
+    f"Titulo: {livros[livro]['titulo']} \t "
+    f"Autor(a): {livros[livro]['autor']} \t "
+    f"Codigo ISBN: {livros[livro]['codigo']} \t "
+    f"Quantidade: {livros[livro]['quantidade']}\t"
+)
 def relatorio():
     pass
 
