@@ -55,7 +55,7 @@ def cadastrar_livros():
         if escolha == "s" or escolha == "sim":
             titulo = input("Insira o titulo do livro: ")
             autor = input("Insira o nome do autor do livro: ")
-            genero = input("Insira o genero literario: ")
+            genero = input("Insira o gênero literario: ")
             codigo = input("Insira o codigo ISBN do livro: ")
             quantidade = int(input("Insira a quantidade de livros: "))
             
@@ -94,7 +94,7 @@ def cadastrar_revista():
             escolha = input("você deseja cadastrar uma revista nova(s/n): ").lower()
     
             if escolha == "s" or escolha == "sim":
-                id = int(input("Insira o ID: "))
+                id_revista = int(input("Insira o ID da revista: "))
                 titulo = input("Insira o titulo: ")
                 edicao = input("Insira a edição: ")
                 publicacao = input("Insira a data de publicação: ")
@@ -102,7 +102,7 @@ def cadastrar_revista():
                 quantidade = int(input("Insira a quantidade: "))
 
                 nova_revista = {
-                    "id": id,
+                    "id": id_revista,
                     "titulo": titulo,
                     "edicao": edicao,
                     "publicacao": publicacao,
@@ -120,9 +120,10 @@ def cadastrar_revista():
 
 def cadastrar_artigo():
     while True:
-            escolha = input("você deseja cadastrar um artigo cíentifico novo(s/n): ").lower()
+            escolha = input("você deseja cadastrar um artigo científico novo(s/n): ").lower()
     
             if escolha == "s" or escolha == "sim":
+                id_artigo = int(input("Insira o ID do artigo: "))
                 titulo = input("Insira o titulo do artigo: ")
                 autor = input("Insira o nome do autores do artigo: ")
                 palavras_chave = input("Insira as palavras chaves: ")
@@ -130,6 +131,7 @@ def cadastrar_artigo():
                 quantidade = int(input("Insira a quantidade de artigos: "))
                 
                 novo_artigo = {
+                    "id": id_artigo,
                     "titulo": titulo,
                     "autor": autor,
                     "palavras_chave": palavras_chave,
@@ -138,7 +140,6 @@ def cadastrar_artigo():
                 }
     
                 artigos.append(novo_artigo)
-                print(artigos)
             elif escolha == "n" or escolha == "não" or escolha == "nao":
                 limpar_terminal()
                 break
@@ -182,17 +183,22 @@ def consultar_acervo(livros,revistas,artigos):
 
     print()
 
-    print("ARTIGOS CÍENTIFICOS")
+    print("ARTIGOS CIENTÍFICOS")
     for artigo in artigos:
         print(
             f"° ID: {artigo['id']:<12}"
             f"Titulo: {artigo['titulo']:<60}"
-            f"Autoes: {artigo['autor']:<45}"
+            f"Autores: {artigo['autor']:<45}"
             f"Palavras-chaves: {artigo['palavras_chave']:<37}"
             f"Publicação: {artigo['publicacao']:<10}"
             f"Quantidade: {artigo['quantidade']}"
         )
-        
+
+    print()
+    input("Pressione Enter para voltar para o menu")
+    limpar_terminal()
+
+
 def relatorio():
     pass
 
@@ -201,11 +207,11 @@ while True:
                 -=-=-=-=MENU=-=-=-=-
         1 - Cadastrar um livro
         2 - Cadastrar um Usuario
-        3 - cadastrar revista
-        4 - cadastrar artigo cíentifico
+        3 - Cadastrar revista
+        4 - Cadastrar artigo cíentifico
         5 - Emprestimo ou devolução de um livro
         6 - Consultar acervo da biblioteca
-        7 - consultar usuarios cadastrados
+        7 - Consultar usuarios cadastrados
         8 - Relatorio de emprstimo
         0 - Fechar sistema
     """)
