@@ -69,11 +69,12 @@ def emprestimo_devolucao():
 def consultar_livros(livros):
     for livro in livros:
         print(
-    f"Titulo: {livros[livro]['titulo']} \t "
-    f"Autor(a): {livros[livro]['autor']} \t "
-    f"Codigo ISBN: {livros[livro]['codigo']} \t "
-    f"Quantidade: {livros[livro]['quantidade']}\t"
+    f"Título: {livro['titulo']:<25}"
+    f"Autor(a): {livro['autor']:<25}"
+    f"Codigo ISBN: {livro['codigo']:<25}"
+    f"Quantidade: {livro['quantidade']}"
 )
+        
 def relatorio():
     pass
 
