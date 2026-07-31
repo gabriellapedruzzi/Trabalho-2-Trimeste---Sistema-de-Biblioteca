@@ -4,16 +4,31 @@ livros = [
     {
         "titulo": "Uma janela sombria",
         "autor": "Rachel Gillig",
+        "genero": "fantasia",
         "codigo": "978-65-85348-55-3",
         "quantidade": 3
     },
     {
         "titulo": "Mistborn",
         "autor": "Brandon Sanderson",
+        "genero": "fantasia",
         "codigo": "978-65-81339-18-0",
         "quantidade": 5
     }
 ]
+
+revistas = [
+    {
+        "id": 2,
+        "titulo": "National Geographic Brasil",
+        "edicao": "284",
+        "publicacao": "09/2024",
+        "editora": "Azul",
+        "quantidade": 1
+    }
+]
+
+artigos = []
 
 usuarios = {
     "gabi@gmail.com": "05062010",
@@ -31,15 +46,18 @@ def cadastrar_livros():
         if escolha == "s" or escolha == "sim":
             titulo = input("Insira o titulo do livro: ")
             autor = input("Insira o nome do autor do livro: ")
+            genero = input("Insira o genero literario: ")
             codigo = input("Insira o codigo ISBN do livro: ")
-            quantidade = int(input("Insira a quantidade de livros"))
+            quantidade = int(input("Insira a quantidade de livros: "))
             
             novo_livro = {
-            "titulo": titulo,
-            "autor": autor,
-            "codigo": codigo,
-            "quantidade": quantidade
+                "titulo": titulo,
+                "autor": autor,
+                "genero": genero,
+                "codigo": codigo,
+                "quantidade": quantidade
             }
+
             livros.append(novo_livro)
         elif escolha == "n" or escolha == "não" or escolha == "nao":
             limpar_terminal()
@@ -62,7 +80,40 @@ def cadastrar_usuarios(usuarios):
         else:
             print("Insira s ou n")
 
+def cadastrar_revista():
+    while True:
+            escolha = input("você deseja cadastrar uma revista nova(s/n): ").lower()
+    
+            if escolha == "s" or escolha == "sim":
+                id = int(input("Insira o ID: "))
+                titulo = input("Insira o titulo: ")
+                edicao = input("Insira a edição: ")
+                publicacao = input("Insira a data de publicação")
+                editora = input("Insira a editora da revista: ")
+                quantidade = int(input("Insira a quantidade: "))
+
+                nova_revista = {
+                    "id": id,
+                    "titulo": titulo,
+                    "edicao": edicao,
+                    "publicacao": publicacao,
+                    "editora": editora,
+                    "quantidade": quantidade
+                }
+
+                revistas.append(nova_revista)
+        
+            elif escolha == "n" or escolha == "não" or escolha == "nao":
+                limpar_terminal()
+                break
+            else:
+                print("Insira s ou n")
+
+def cadastrar_artigo():
+    pass
+
 def mostrar_usuarios(usuarios):
+    limpar_terminal()
     for usuario in usuarios:
         email = usuario
         senha = usuarios[usuario]
@@ -71,26 +122,40 @@ def mostrar_usuarios(usuarios):
 def emprestimo_devolucao():
     pass
 
-def consultar_livros(livros):
+def consultar_acervo(livros,revistas):
+    limpar_terminal()
+    print("LIVROS")
     for livro in livros:
         print(
-    f"Título: {livro['titulo']:<25}"
-    f"Autor(a): {livro['autor']:<25}"
-    f"Codigo ISBN: {livro['codigo']:<25}"
-    f"Quantidade: {livro['quantidade']}"
-)
+        f"Título: {livro['titulo']:<25}"
+        f"Autor(a): {livro['autor']:<30}"
+        f"Genero Literario: {livro['genero']:<20}"
+        f"Codigo ISBN: {livro['codigo']:<27}"
+        f"Quantidade: {livro['quantidade']}"
+    )
+
+    print()
+    print("REVISTAS")
+    for revista in revistas:
+        print(
+            f"id: {revista['id']:<25}"
+            
+        )
         
 def relatorio():
     pass
 
 while True:
     print("""
+                -=-=-=-=MENU=-=-=-=-
         1 - Cadastrar um livro
         2 - Cadastrar um Usuario
-        3 - Emprestimo ou devolução de um livro
-        4 - Consultar livros disponiveis
-        5 - consultar usuarios cadastrados
-        6 - Relatorio de emprstimo
+        3 - cadastrar revista
+        4 - cadastrar artigo cíentifico
+        5 - Emprestimo ou devolução de um livro
+        6 - Consultar acervo da biblioteca
+        7 - consultar usuarios cadastrados
+        8 - Relatorio de emprstimo
         0 - Fechar sistema
     """)
 
@@ -101,12 +166,16 @@ while True:
     elif opcao == "2":
         cadastrar_usuarios(usuarios)
     elif opcao == "3":
-        emprestimo_devolucao()
+        cadastrar_revista()
     elif opcao == "4":
-        consultar_livros(livros)
+        cadastrar_artigo()
     elif opcao == "5":
-        mostrar_usuarios(usuarios)
+        emprestimo_devolucao()
     elif opcao == "6":
+        consultar_acervo(livros,revistas)
+    elif opcao == "7":
+        mostrar_usuarios(usuarios)
+    elif opcao == "8":
         relatorio()
     elif opcao == "0":
         break
