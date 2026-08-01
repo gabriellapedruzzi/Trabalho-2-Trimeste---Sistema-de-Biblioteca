@@ -41,7 +41,9 @@ artigos = [
 
 usuarios = {
     "gabi@gmail.com": "05062010",
-    "ademar@gmail.com": "ademar123"
+    "ademar@gmail.com": "ademar123",
+    "juli@gmail.com": "juliane923",
+    "mariane@hotmail.com": "mdcol2012"
 }
 
 
@@ -51,6 +53,7 @@ def limpar_terminal():
 def cadastrar_livros():
     while True:
         escolha = input("você deseja cadastrar um livro novo(s/n): ").lower()
+        limpar_terminal()
 
         if escolha == "s" or escolha == "sim":
             titulo = input("Insira o titulo do livro: ")
@@ -78,6 +81,8 @@ def cadastrar_livros():
 def cadastrar_usuarios(usuarios):
     while True:
         alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
+        limpar_terminal()
+
         if alternativa == "s" or alternativa == "sim":
             email = input("Insira seu email: ")
             senha = input("Insira sua senha: ")
@@ -92,6 +97,7 @@ def cadastrar_usuarios(usuarios):
 def cadastrar_revista():
     while True:
             escolha = input("você deseja cadastrar uma revista nova(s/n): ").lower()
+            limpar_terminal()
     
             if escolha == "s" or escolha == "sim":
                 id_revista = int(input("Insira o ID da revista: "))
@@ -121,6 +127,7 @@ def cadastrar_revista():
 def cadastrar_artigo():
     while True:
             escolha = input("você deseja cadastrar um artigo científico novo(s/n): ").lower()
+            limpar_terminal()
     
             if escolha == "s" or escolha == "sim":
                 id_artigo = int(input("Insira o ID do artigo: "))
@@ -151,7 +158,7 @@ def mostrar_usuarios(usuarios):
     for usuario in usuarios:
         email = usuario
         senha = usuarios[usuario]
-        print(f"email: {email:<25} senha: {senha}")
+        print(f"° email: {email:<25} senha: {senha}")
 
     print()
     input("Pressione Enter para voltar para o menu")
@@ -178,7 +185,7 @@ def consultar_acervo(livros,revistas,artigos):
     for revista in revistas:
         print(
             f"° ID: {revista['id']:<15}"
-            f"Titulo: {revista['titulo']:<20}"
+            f"Titulo: {revista['titulo']:<30}"
             f"Edição: {revista['edicao']:<20}"
             f"Publicação: {revista['publicacao']:<20}"
             f"Editora: {revista['editora']:<20}"
