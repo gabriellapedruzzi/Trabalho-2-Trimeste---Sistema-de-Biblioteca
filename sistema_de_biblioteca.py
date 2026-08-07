@@ -39,12 +39,16 @@ artigos = [
     }
 ]
 
-usuarios = {
-    "gabi@gmail.com": "05062010",
-    "ademar@gmail.com": "ademar123",
-    "juli@gmail.com": "juliane923",
-    "mariane@hotmail.com": "mdcol2012"
-}
+usuarios = [
+    {
+        "email": "gabi@gmail.com",
+        "senha": "0506"
+    },
+    {
+        "email": "marcia@gmail.com",
+        "senha": "1708"
+    }
+]
 
 
 def limpar_terminal():
@@ -87,7 +91,12 @@ def cadastrar_usuarios(usuarios):
             email = input("Insira seu email: ")
             senha = input("Insira sua senha: ")
 
-            usuarios[email] = senha
+            novo_usuario = {
+                "email": email,
+                "senha": senha
+            }
+            usuarios.append(novo_usuario)
+
         elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
             limpar_terminal()
             break
@@ -155,10 +164,12 @@ def cadastrar_artigo():
 
 def mostrar_usuarios(usuarios):
     limpar_terminal()
+
     for usuario in usuarios:
-        email = usuario
-        senha = usuarios[usuario]
-        print(f"° email: {email:<25} senha: {senha}")
+        print(
+            f"Email: {usuario["email"]:<25}"
+            f"Senha: {usuario["senha"]}"
+        )
 
     print()
     input("Pressione Enter para voltar para o menu")
@@ -216,10 +227,10 @@ def relatorio():
 while True:
     print("""
                 -=-=-=-=MENU=-=-=-=-
-        1 - Cadastrar um livro
-        2 - Cadastrar um Usuário
+        1 - Cadastrar livro
+        2 - Cadastrar artigo científico
         3 - Cadastrar revista
-        4 - Cadastrar artigo científico
+        4 - Cadastrar usuario
         5 - Emprestimo ou devolução de um livro
         6 - Consultar acervo da biblioteca
         7 - Consultar usuarios cadastrados
@@ -232,11 +243,11 @@ while True:
     if opcao == "1":
         cadastrar_livros()
     elif opcao == "2":
-        cadastrar_usuarios(usuarios)
+        cadastrar_artigo()
     elif opcao == "3":
         cadastrar_revista()
     elif opcao == "4":
-        cadastrar_artigo()
+        cadastrar_usuarios(usuarios)
     elif opcao == "5":
         emprestimo_devolucao()
     elif opcao == "6":
