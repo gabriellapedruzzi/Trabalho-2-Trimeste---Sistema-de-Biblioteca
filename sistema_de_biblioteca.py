@@ -82,27 +82,6 @@ def cadastrar_livros():
             print("Insira s ou n")
 
 
-def cadastrar_usuarios(usuarios):
-    while True:
-        alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
-        limpar_terminal()
-
-        if alternativa == "s" or alternativa == "sim":
-            email = input("Insira seu email: ")
-            senha = input("Insira sua senha: ")
-
-            novo_usuario = {
-                "email": email,
-                "senha": senha
-            }
-            usuarios.append(novo_usuario)
-
-        elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
-            limpar_terminal()
-            break
-        else:
-            print("Insira s ou n")
-
 def cadastrar_revista():
     while True:
             escolha = input("você deseja cadastrar uma revista nova(s/n): ").lower()
@@ -162,6 +141,31 @@ def cadastrar_artigo():
             else:
                 print("Insira s ou n")
 
+
+def cadastrar_usuarios(usuarios):
+    while True:
+        alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
+        limpar_terminal()
+
+        if alternativa == "s" or alternativa == "sim":
+            email = input("Insira seu email: ")
+            senha = input("Insira sua senha: ")
+
+            novo_usuario = {
+                "email": email,
+                "senha": senha
+            }
+            usuarios.append(novo_usuario)
+
+        elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
+            limpar_terminal()
+            break
+        else:
+            print("Insira s ou n")
+
+def emprestimo_devolucao():
+    pass
+
 def mostrar_usuarios(usuarios):
     limpar_terminal()
 
@@ -175,8 +179,7 @@ def mostrar_usuarios(usuarios):
     input("Pressione Enter para voltar para o menu")
     limpar_terminal()
 
-def emprestimo_devolucao():
-    pass
+
 
 def consultar_acervo(livros,revistas,artigos):
     limpar_terminal()
