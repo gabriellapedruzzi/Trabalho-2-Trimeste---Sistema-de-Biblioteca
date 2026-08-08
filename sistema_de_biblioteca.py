@@ -19,7 +19,7 @@ livros = [
 
 revistas = [
     {
-        "id": 8987878,
+        "codigo": 8987878,
         "titulo": "National Geographic Brasil",
         "edicao": "284",
         "publicacao": "09/2024",
@@ -30,7 +30,7 @@ revistas = [
 
 artigos = [
     {
-        "id": 6586586, 
+        "codigo": 6586586, 
         "titulo": "A Importância da Libras para Inclusão Escolar do Surdo",
         "autor": "Marilene Domanovski, Adriane Meyer Vassão",
         "palavras_chave": "Libras, Inclusão Escolar, Surdez",
@@ -88,7 +88,7 @@ def cadastrar_revista():
             limpar_terminal()
     
             if escolha == "s" or escolha == "sim":
-                id_revista = int(input("Insira o ID da revista: "))
+                codigo_revista = int(input("Insira o codigo da revista: "))
                 titulo = input("Insira o titulo: ")
                 edicao = input("Insira a edição: ")
                 publicacao = input("Insira a data de publicação: ")
@@ -96,7 +96,7 @@ def cadastrar_revista():
                 quantidade = int(input("Insira a quantidade: "))
 
                 nova_revista = {
-                    "id": id_revista,
+                    "codigo": codigo_revista,
                     "titulo": titulo,
                     "edicao": edicao,
                     "publicacao": publicacao,
@@ -118,7 +118,7 @@ def cadastrar_artigo():
             limpar_terminal()
     
             if escolha == "s" or escolha == "sim":
-                id_artigo = int(input("Insira o ID do artigo: "))
+                codigo_artigo = int(input("Insira o codigo do artigo: "))
                 titulo = input("Insira o titulo do artigo: ")
                 autor = input("Insira o nome dos autores do artigo: ")
                 palavras_chave = input("Insira as palavras chaves: ")
@@ -126,7 +126,7 @@ def cadastrar_artigo():
                 quantidade = int(input("Insira a quantidade de artigos: "))
                 
                 novo_artigo = {
-                    "id": id_artigo,
+                    "codigo": codigo_artigo,
                     "titulo": titulo,
                     "autor": autor,
                     "palavras_chave": palavras_chave,
@@ -189,6 +189,8 @@ def emprestimo_livro():
     while True:
         alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
         limpar_terminal()
+
+
         if alternativa == "s" or alternativa == "sim":   
             codigo = input(" insira o codigo do item que deseja pegar emprestado: ")
 
@@ -258,7 +260,7 @@ def consultar_acervo(livros,revistas,artigos):
     print("REVISTAS")
     for revista in revistas:
         print(
-            f"° ID: {revista['id']:<15}"
+            f"° ID: {revista['codigo']:<15}"
             f"Titulo: {revista['titulo']:<30}"
             f"Edição: {revista['edicao']:<20}"
             f"Publicação: {revista['publicacao']:<20}"
@@ -271,7 +273,7 @@ def consultar_acervo(livros,revistas,artigos):
     print("ARTIGOS CIENTÍFICOS")
     for artigo in artigos:
         print(
-            f"° ID: {artigo['id']:<12}"
+            f"° ID: {artigo['codigo']:<12}"
             f"Titulo: {artigo['titulo']:<60}"
             f"Autores: {artigo['autor']:<45}"
             f"Palavras-chaves: {artigo['palavras_chave']:<37}"
