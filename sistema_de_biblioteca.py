@@ -163,8 +163,47 @@ def cadastrar_usuarios(usuarios):
         else:
             print("Insira s ou n")
 
-def emprestimo_devolucao():
-    pass
+def emprestar_devolucao(codigo):
+
+    print("""""
+           =-=-=-=-= Emprestimo e Devolução de Livros -=-=-=-=-=-=-=-
+    Escolha uma opção:
+    1 - emprestar_livro
+    2 - devolução_livro
+     """)
+
+   
+    
+def emprestar_livro(codigo):
+    for livro in livros:
+            if livro["codigo"] == codigo:
+                
+                if livro["quantidade"] > 0:
+                    livro["quantidade"] -= 1  
+                    print(f"Sucesso: Empréstimo de '{livro['titulo']}' realizado!")
+                    print(f"Quantidade restante: {livro['quantidade']}")
+                    return True
+                else:
+                    print(f"Erro: O livro '{livro['titulo']}' está esgotado.")
+                    return False
+                    
+    print("Erro: Livro não encontrado com o código fornecido.")
+    return False
+
+
+def devolução_livro(codigo):
+    for livro in livros:
+        if livro["codigo"] == codigo:
+
+           
+                livro["quantidade"] += 1
+                print(f"Sucesso: Devolução de '{livro['titulo']}' realizado!")
+                return True
+           
+
+    print("Erro: Livro não encontrado com o código fornecido.")
+    return False
+
 
 def mostrar_usuarios(usuarios):
     limpar_terminal()
