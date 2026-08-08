@@ -163,32 +163,53 @@ def cadastrar_usuarios(usuarios):
         else:
             print("Insira s ou n")
 
-def emprestar_devolucao(codigo):
+def emprestimo_devolucao():
 
     print("""""
-           =-=-=-=-= Emprestimo e Devolução de Livros -=-=-=-=-=-=-=-
-    Escolha uma opção:
-    1 - emprestar_livro
-    2 - devolução_livro
-     """)
+           =-=-=-=-= Emprestimo e Devolução de Livros -=-=-=-=-=
+
+        1 - emprestimo
+        2 - devolvolução
+    """)
+
+    opcao = input("Insira uma opção: ")
+
+    if opcao == "1":
+        limpar_terminal()
+        emprestimo_livro()
+    elif opcao == "2":
+        limpar_terminal()
+        devolução_livro()
+    else:
+        print("Insira uma das opções ")
 
    
     
-def emprestar_livro(codigo):
-    for livro in livros:
-            if livro["codigo"] == codigo:
-                
-                if livro["quantidade"] > 0:
-                    livro["quantidade"] -= 1  
-                    print(f"Sucesso: Empréstimo de '{livro['titulo']}' realizado!")
-                    print(f"Quantidade restante: {livro['quantidade']}")
-                    return True
-                else:
-                    print(f"Erro: O livro '{livro['titulo']}' está esgotado.")
-                    return False
-                    
-    print("Erro: Livro não encontrado com o código fornecido.")
-    return False
+def emprestimo_livro():
+    while True:
+        alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
+        limpar_terminal()
+        if alternativa == "s" or alternativa == "sim":   
+            codigo = input(" insira o codigo do item que deseja pegar emprestado: ")
+
+            for livro in livros or artigos or revistas:
+                    if livro["codigo"] == codigo:
+                        if livro["quantidade"] > 0:
+                            livro["quantidade"] -= 1  
+                            print(f"Empréstimo de '{livro['titulo']}' realizado!")
+                            print(f"Quantidade restante: {livro['quantidade']}")
+                        else:
+                            print(f"'{livro['titulo']}' está esgotado.")
+                    else:
+                        print("Item não encontrado")
+
+        elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
+            limpar_terminal()
+            break
+        else:
+            print("Insira s ou n")
+
+    
 
 
 def devolução_livro(codigo):
@@ -273,7 +294,7 @@ while True:
         2 - Cadastrar artigo científico
         3 - Cadastrar revista
         4 - Cadastrar usuario
-        5 - Emprestimo ou devolução de um livro
+        5 - Emprestimo e devolução
         6 - Consultar acervo da biblioteca
         7 - Consultar usuarios cadastrados
         8 - Relatorio de empréstimo
