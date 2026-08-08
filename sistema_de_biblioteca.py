@@ -164,28 +164,33 @@ def cadastrar_usuarios(usuarios):
             print("Insira s ou n")
 
 def emprestimo_devolucao():
+    limpar_terminal()
+    while True: 
+        print("""""
+            =-=-=-=-= Emprestimo e Devolução de Livros -=-=-=-=-=
 
-    print("""""
-           =-=-=-=-= Emprestimo e Devolução de Livros -=-=-=-=-=
+            1 - emprestimo
+            2 - devolvolução
+            0 - voltar ao menu
+        """)
 
-        1 - emprestimo
-        2 - devolvolução
-    """)
+        opcao = input("Insira uma opção: ")
 
-    opcao = input("Insira uma opção: ")
-
-    if opcao == "1":
-        limpar_terminal()
-        emprestimo_livro()
-    elif opcao == "2":
-        limpar_terminal()
-        devolução_livro()
-    else:
-        print("Insira uma das opções ")
+        if opcao == "1":
+            limpar_terminal()
+            emprestimo()
+        elif opcao == "2":
+            limpar_terminal()
+            devolução()
+        elif opcao == "0":
+            limpar_terminal()
+            break
+        else:
+            print("Insira uma das opções ")
 
    
     
-def emprestimo_livro():
+def emprestimo():
     while True:
         alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
         limpar_terminal()
@@ -214,7 +219,7 @@ def emprestimo_livro():
     
 
 
-def devolução_livro(codigo):
+def devolução(codigo):
     for livro in livros:
         if livro["codigo"] == codigo:
 
