@@ -306,7 +306,7 @@ def relatorio():
                 f"Código:{emprestimo['codigo']}"
                 f"Título:{emprestimo['titulo']}"
                 f"Tipo:{emprestimo['tipo']}"
-         ------------------------------------------------------
+         "------------------------------------------------------"
           )
 
 while True:
