@@ -291,7 +291,7 @@ def consultar_acervo(livros,revistas,artigos):
 
 def relatorio():
     limpar_terminal()
-    
+    while true:
     print("""
     ================= RELATÓRIO DE EMPRESTIMOS ====================
     """)
@@ -299,7 +299,7 @@ def relatorio():
     if len (emprestimos) == 0:
         print("Nennhum emprestimo foi realizado.")
     else:
-        for emprestimo in enumerate(emprestimos,1):
+        for emprestimo in emprestimos:
             print(
                 f"Empréstimo{i}"
                 f"Usuário:{emprestimo['email']}"
