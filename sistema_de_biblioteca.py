@@ -244,9 +244,10 @@ else:
         Empréstimo{i}
         Usuário:{emprestimo['email']}
         Código:{emprestimo['codigo']}
-        Título:{e
-            Tipo
-
+        Título:{emprestimo['titulo']}
+        Tipo:{emprestimo['tipo']}
+     ------------------------------------------------------
+      """)
 def mostrar_usuarios(usuarios):
     limpar_terminal()
 
