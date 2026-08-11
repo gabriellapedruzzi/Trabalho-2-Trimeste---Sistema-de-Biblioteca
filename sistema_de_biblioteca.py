@@ -291,7 +291,7 @@ def consultar_acervo(livros,revistas,artigos):
 
 def relatorio():
     limpar_terminal()
-    while true:
+
     print("""
     ================= RELATÓRIO DE EMPRESTIMOS ====================
     """)
@@ -301,7 +301,7 @@ def relatorio():
     else:
         for emprestimo in emprestimos:
             print(
-                f"Empréstimo{}"
+                f"Empréstimo"
                 f"Usuário:{emprestimo['email']}"
                 f"Código:{emprestimo['codigo']}"
                 f"Título:{emprestimo['titulo']}"
