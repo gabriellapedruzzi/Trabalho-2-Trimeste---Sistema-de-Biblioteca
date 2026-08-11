@@ -231,25 +231,7 @@ def devolução(codigo):
 
     print("Erro: Livro não encontrado com o código fornecido.")
     return False
-def relatorio():
-    limpar_terminal()
-    
-    print("""
-    ================= RELATÓRIO DE EMPRESTIMOS ====================
-    """)
-    
-    if len (emprestimos) == 0:
-        print("Nennhum emprestimo foi realizado.")
-    else:
-        for emprestimo in enumerate(emprestimos,1):
-            print(f"""
-            Empréstimo{i}
-            Usuário:{emprestimo['email']}
-            Código:{emprestimo['codigo']}
-            Título:{emprestimo['titulo']}
-            Tipo:{emprestimo['tipo']}
-         ------------------------------------------------------
-          """)
+
 def mostrar_usuarios(usuarios):
     limpar_terminal()
 
@@ -307,9 +289,25 @@ def consultar_acervo(livros,revistas,artigos):
     input("Pressione Enter para voltar para o menu")
     limpar_terminal()
 
-
 def relatorio():
-    pass
+    limpar_terminal()
+    
+    print("""
+    ================= RELATÓRIO DE EMPRESTIMOS ====================
+    """)
+    
+    if len (emprestimos) == 0:
+        print("Nennhum emprestimo foi realizado.")
+    else:
+        for emprestimo in enumerate(emprestimos,1):
+            print(
+                f"Empréstimo{i}"
+                f"Usuário:{emprestimo['email']}"
+                f"Código:{emprestimo['codigo']}"
+                f"Título:{emprestimo['titulo']}"
+                f"Tipo:{emprestimo['tipo']}"
+         ------------------------------------------------------
+          )
 
 while True:
     print("""
