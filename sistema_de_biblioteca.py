@@ -166,7 +166,7 @@ def cadastrar_usuarios(usuarios):
 def emprestimo_devolucao():
     limpar_terminal()
     while True: 
-        print("""""
+        print("""
             =-=-=-=-= Emprestimo e Devolução de Livros -=-=-=-=-=
 
             1 - emprestimo
@@ -231,23 +231,25 @@ def devolução(codigo):
 
     print("Erro: Livro não encontrado com o código fornecido.")
     return False
-def relatorio()
-limpar_terminal()
-print("""
-================= RELATÓRIO DE EMPRESTIMOS ====================
-""")
-if len (emprestimos) == 0:
-    print("Nennhum emprestimo foi realizado.")
-else:
-    for emprestimo in enumerate(emprestimos,1):
-        print(f"""
-        Empréstimo{i}
-        Usuário:{emprestimo['email']}
-        Código:{emprestimo['codigo']}
-        Título:{emprestimo['titulo']}
-        Tipo:{emprestimo['tipo']}
-     ------------------------------------------------------
-      """)
+def relatorio():
+    limpar_terminal()
+    
+    print("""
+    ================= RELATÓRIO DE EMPRESTIMOS ====================
+    """)
+    
+    if len (emprestimos) == 0:
+        print("Nennhum emprestimo foi realizado.")
+    else:
+        for emprestimo in enumerate(emprestimos,1):
+            print(f"""
+            Empréstimo{i}
+            Usuário:{emprestimo['email']}
+            Código:{emprestimo['codigo']}
+            Título:{emprestimo['titulo']}
+            Tipo:{emprestimo['tipo']}
+         ------------------------------------------------------
+          """)
 def mostrar_usuarios(usuarios):
     limpar_terminal()
 
