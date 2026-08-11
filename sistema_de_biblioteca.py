@@ -301,7 +301,7 @@ def relatorio():
     else:
         for emprestimo in emprestimos:
             print(
-                f"Empréstimo{i}"
+                f"Empréstimo{}"
                 f"Usuário:{emprestimo['email']}"
                 f"Código:{emprestimo['codigo']}"
                 f"Título:{emprestimo['titulo']}"
