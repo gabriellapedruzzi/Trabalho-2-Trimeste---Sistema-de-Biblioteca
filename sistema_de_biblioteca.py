@@ -50,7 +50,15 @@ usuarios = [
     }
 ]
 
-emprestimos = []
+emprestimos = [
+    {
+        "titulo": "O Hobbit",
+        "autor": "J.R.R. Tolkien",
+        "genero": "fantasia",
+        "codigo": "978-8595084742", 
+        "quantidade": 0
+    }
+]
 
 def limpar_terminal():
     os.system("cls")
@@ -254,47 +262,24 @@ def emprestimo_artigo(artigos, emprestimos):
 
 def devolucao():
     while True:
-            alternativa = input("Você deseja pegar emprestado um item do acervo(s/n): ").lower()
+        alternativa = input("Você deseja devolver um item do acervo(s/n): ").lower()
+        limpar_terminal()
+
+
+        if alternativa == "s" or alternativa == "sim":
+            codigo = int(input("Insira o codigo do livro que você deseja devolver:"))
+            
+            for item in emprestimos:
+                if codigo == item['codigo']:
+                    print(f"Você devolveu {item['titulo']}")
+                    item['quantidade'] += 1
+                    emprestimos.remove(item)
+
+        elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
             limpar_terminal()
-    
-    
-            if alternativa == "s" or alternativa == "sim":
-                print("""
-                    1 - Devolução de livros
-                    2 - Devolução de revistas
-                    3 - Devolução de artigos 
-    
-                """)
-    
-                opcao = input("Insira uma opção: ")
-                
-                if opcao == "1":
-                    limpar_terminal()
-                    devolver_livro(livros, emprestimos)
-                elif opcao == "2":
-                    limpar_terminal()
-                    devolver_revista(revistas, emprestimos)
-                elif opcao == "3":
-                    limpar_terminal()
-                    devolver_artigo(artigos, emprestimos)
-                else:
-                    print("Insira uma das opções") 
-    
-            elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
-                limpar_terminal()
-                break
-            else:
-                print("Insira s ou n")
-
-
-def devolver_livro(livros, emprestimos):
-    pass
-
-def devolver_revista(revistas, emprestimos):
-    pass
-
-def devolver_artigo(artigos, emprestimos):
-    pass
+            break
+        else:
+            print("Insira s ou n")
 
     
 
