@@ -19,7 +19,7 @@ livros = [
 
 revistas = [
     {
-        "codigo": 8987878,
+        "codigo": 1,
         "titulo": "National Geographic Brasil",
         "edicao": "284",
         "publicacao": "09/2024",
@@ -30,7 +30,7 @@ revistas = [
 
 artigos = [
     {
-        "codigo": 6586586, 
+        "codigo": 2, 
         "titulo": "A Importância da Libras para Inclusão Escolar do Surdo",
         "autor": "Marilene Domanovski, Adriane Meyer Vassão",
         "palavras_chave": "Libras, Inclusão Escolar, Surdez",
@@ -50,6 +50,7 @@ usuarios = [
     }
 ]
 
+emprestimos = []
 
 def limpar_terminal():
     os.system("cls")
@@ -163,52 +164,35 @@ def cadastrar_usuarios(usuarios):
         else:
             print("Insira s ou n")
 
-def emprestimo_devolucao():
-    limpar_terminal()
-    while True: 
-        print("""
-            =-=-=-=-= Emprestimo e Devolução de Livros -=-=-=-=-=
-
-            1 - emprestimo
-            2 - devolvolução
-            0 - voltar ao menu
-        """)
-
-        opcao = input("Insira uma opção: ")
-
-        if opcao == "1":
-            limpar_terminal()
-            emprestimo()
-        elif opcao == "2":
-            limpar_terminal()
-            devolução()
-        elif opcao == "0":
-            limpar_terminal()
-            break
-        else:
-            print("Insira uma das opções ")
-
    
     
 def emprestimo():
     while True:
-        alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
+        alternativa = input("Você deseja pegar emprestado um item do acervo(s/n): ").lower()
         limpar_terminal()
 
 
-        if alternativa == "s" or alternativa == "sim":   
-            codigo = input(" insira o codigo do item que deseja pegar emprestado: ")
+        if alternativa == "s" or alternativa == "sim":
+            print("""
+                1 - Emprestimo de livros
+                2 - Emprestimo de revistas
+                3 - Emprestimo de artigos 
 
-            for livro in livros or artigos or revistas:
-                    if livro["codigo"] == codigo:
-                        if livro["quantidade"] > 0:
-                            livro["quantidade"] -= 1  
-                            print(f"Empréstimo de '{livro['titulo']}' realizado!")
-                            print(f"Quantidade restante: {livro['quantidade']}")
-                        else:
-                            print(f"'{livro['titulo']}' está esgotado.")
-                    else:
-                        print("Item não encontrado")
+            """)
+
+            opcao = input("Insira uma opção: ")
+            
+            if opcao == "1":
+                limpar_terminal()
+                emprestimo_livro(livros, emprestimos)
+            elif opcao == "2":
+                limpar_terminal()
+                emprestimo_revista(revistas, emprestimos)
+            elif opcao == "3":
+                limpar_terminal()
+                emprestimo_artigo(artigos, emprestimos)
+            else:
+                print("Insira uma das opções") 
 
         elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
             limpar_terminal()
@@ -217,20 +201,102 @@ def emprestimo():
             print("Insira s ou n")
 
     
+def emprestimo_livro(livros, emprestimos):
+        codigo = input("Insira o codigo do livro que você deseja pegar emprestado: ")
+
+        for livro in livros:
+            if codigo == livro['codigo']:
+                if livro['quantidade'] > 0:
+                    livro['quantidade'] -= 1
+                    emprestimos.append(livro)
+                    praso = "7 dias"
+                    print(f"Você pegou emprestado {livro['titulo']} e tem {praso} para devolver")
+                    return
+                else:
+                    print("Não ha exemplares desse livro")
+                    return
+
+        print("livro não encontrado")
+
+def emprestimo_revista(revistas, emprestimos):
+    codigo = int(input("Insira o codigo do livro que você deseja pegar emprestado: "))
+    
+    for revista in revistas:
+        if codigo == revista['codigo']:
+            if revista['quantidade'] > 0:
+                revista['quantidade'] -= 1
+                emprestimos.append(revista)
+                praso = "7 dias"
+                print(f"Você pegou emprestado {revista['titulo']} e tem {praso} para devolver")
+                return
+            else:
+                print("Não ha exemplares desse livro")
+                return
+
+    print("livro não encontrado")
+
+def emprestimo_artigo(artigos, emprestimos):
+    codigo = int(input("Insira o codigo do livro que você deseja pegar emprestado: "))
+        
+    for artigo in artigos:
+        if codigo == artigo['codigo']:
+            if artigo['quantidade'] > 0:
+                artigo['quantidade'] -= 1
+                emprestimos.append(artigo)
+                praso = "7 dias"
+                print(f"Você pegou emprestado {artigo['titulo']} e tem {praso} para devolver")
+                return
+            else:
+                print("Não ha exemplares desse livro")
+                return
+
+    print("livro não encontrado")
+
+def devolucao():
+    while True:
+            alternativa = input("Você deseja pegar emprestado um item do acervo(s/n): ").lower()
+            limpar_terminal()
+    
+    
+            if alternativa == "s" or alternativa == "sim":
+                print("""
+                    1 - Devolução de livros
+                    2 - Devolução de revistas
+                    3 - Devolução de artigos 
+    
+                """)
+    
+                opcao = input("Insira uma opção: ")
+                
+                if opcao == "1":
+                    limpar_terminal()
+                    devolver_livro(livros, emprestimos)
+                elif opcao == "2":
+                    limpar_terminal()
+                    devolver_revista(revistas, emprestimos)
+                elif opcao == "3":
+                    limpar_terminal()
+                    devolver_artigo(artigos, emprestimos)
+                else:
+                    print("Insira uma das opções") 
+    
+            elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
+                limpar_terminal()
+                break
+            else:
+                print("Insira s ou n")
 
 
-def devolução(codigo):
-    for livro in livros:
-        if livro["codigo"] == codigo:
+def devolver_livro(livros, emprestimos):
+    pass
 
-           
-                livro["quantidade"] += 1
-                print(f"Sucesso: Devolução de '{livro['titulo']}' realizado!")
-                return True
-           
+def devolver_revista(revistas, emprestimos):
+    pass
 
-    print("Erro: Livro não encontrado com o código fornecido.")
-    return False
+def devolver_artigo(artigos, emprestimos):
+    pass
+
+    
 
 def mostrar_usuarios(usuarios):
     limpar_terminal()
@@ -290,24 +356,7 @@ def consultar_acervo(livros,revistas,artigos):
     limpar_terminal()
 
 def relatorio():
-    limpar_terminal()
-
-    print("""
-    ================= RELATÓRIO DE EMPRESTIMOS ====================
-    """)
-    
-    if len (emprestimos) == 0:
-        print("Nennhum emprestimo foi realizado.")
-    else:
-        for emprestimo in emprestimos:
-            print(
-                f"Empréstimo"
-                f"Usuário:{emprestimo['email']}"
-                f"Código:{emprestimo['codigo']}"
-                f"Título:{emprestimo['titulo']}"
-                f"Tipo:{emprestimo['tipo']}"
-         "------------------------------------------------------"
-          )
+    pass
 
 while True:
     print("""
@@ -316,10 +365,11 @@ while True:
         2 - Cadastrar artigo científico
         3 - Cadastrar revista
         4 - Cadastrar usuario
-        5 - Emprestimo e devolução
-        6 - Consultar acervo da biblioteca
-        7 - Consultar usuarios cadastrados
-        8 - Relatorio de empréstimo
+        5 - Emprestimo 
+        6 - devolução
+        7 - Consultar acervo da biblioteca
+        8 - Consultar usuarios cadastrados
+        9 - Relatorio de empréstimo
         0 - Fechar sistema
     """)
 
@@ -334,12 +384,14 @@ while True:
     elif opcao == "4":
         cadastrar_usuarios(usuarios)
     elif opcao == "5":
-        emprestimo_devolucao()
+        emprestimo()
     elif opcao == "6":
-        consultar_acervo(livros,revistas,artigos)
+        devolucao()
     elif opcao == "7":
-        mostrar_usuarios(usuarios)
+        consultar_acervo(livros,revistas,artigos)
     elif opcao == "8":
+        mostrar_usuarios(usuarios)
+    elif opcao == "9":
         relatorio()
     elif opcao == "0":
         limpar_terminal()
