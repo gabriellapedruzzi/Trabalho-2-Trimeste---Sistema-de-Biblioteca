@@ -42,11 +42,13 @@ artigos = [
 usuarios = [
     {
         "email": "gabi@gmail.com",
-        "senha": "0506"
+        "senha": "0506",
+        "nome": "Gabriella"
     },
     {
         "email": "marcia@gmail.com",
-        "senha": "1708"
+        "senha": "1708",
+        "nome": "Marcia"
     }
 ]
 
@@ -151,10 +153,12 @@ def cadastrar_usuarios(usuarios):
         if alternativa == "s" or alternativa == "sim":
             email = input("Insira seu email: ")
             senha = input("Insira sua senha: ")
+            nome = input("Insra seu nome")
 
             novo_usuario = {
                 "email": email,
-                "senha": senha
+                "senha": senha,
+                "nome": nome
             }
             usuarios.append(novo_usuario)
 
@@ -171,46 +175,65 @@ def emprestimo():
         alternativa = input("Você deseja pegar emprestado um item do acervo(s/n): ").lower()
         limpar_terminal()
 
-
         if alternativa == "s" or alternativa == "sim":
             senha = input("Insira sua senha: ")
-            for usuario in usuarios:
-                if senha == usuario['senha']:
-                    print("""
-                        1 - Emprestimo de livros
-                        2 - Emprestimo de revistas
-                        3 - Emprestimo de artigos 
 
-                    """)
-                    opcao = input("Insira uma opção: ")
-                        
-                    if opcao == "1":
-                        limpar_terminal()
-                        emprestimo_livro(livros, emprestimos, usuarios)
-                    elif opcao == "2":
-                        limpar_terminal()
-                        emprestimo_revista(revistas, emprestimos)
-                    elif opcao == "3":
-                        limpar_terminal()
-                        emprestimo_artigo(artigos, emprestimos)
-                    else:
-                        print("Insira uma das opções") 
+            usuario_encontrado = None
+
+            for usuario in usuarios:
+                if senha == usuario["senha"]:
+                    usuario_encontrado = usuario
+                    break
+
+            if usuario_encontrado:
+                print("""
+                    1 - Emprestimo de livros
+                    2 - Emprestimo de revistas
+                    3 - Emprestimo de artigos
+                """)
+
+                opcao = input("Insira uma opção: ")
+
+                if opcao == "1":
+                    limpar_terminal()
+                    emprestimo_livro(livros, emprestimos, usuario_encontrado)
+
+                elif opcao == "2":
+                    limpar_terminal()
+                    emprestimo_revista(revistas, emprestimos, usuario_encontrado)
+
+                elif opcao == "3":
+                    limpar_terminal()
+                    emprestimo_artigo(artigos, emprestimos, usuario_encontrado)
+
+                else:
+                    print("Insira uma das opções")
+
+            else:
+                print("Senha incorreta.")
 
         elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
             limpar_terminal()
             break
+
         else:
             print("Insira s ou n")
 
     
-def emprestimo_livro(livros, emprestimos,usuarios):
+def emprestimo_livro(livros, emprestimos,usuario):
         codigo = input("Insira o codigo do livro que você deseja pegar emprestado: ")
 
         for livro in livros:
             if codigo == livro['codigo']:
                 if livro['quantidade'] > 0:
                     livro['quantidade'] -= 1
-                    emprestimos.append(livro.copy())
+
+                    emprestimos.append({
+                    "usuario": usuario["email"],
+                    "tipo": "livro",
+                    "codigo": livro["codigo"],
+                    "titulo": livro["titulo"]
+                })
                    
                     praso = "7 dias"
                     print(f"Você pegou emprestado {livro['titulo']} e tem {praso} para devolver")
@@ -221,41 +244,54 @@ def emprestimo_livro(livros, emprestimos,usuarios):
 
         print("livro não encontrado")
 
-def emprestimo_revista(revistas, emprestimos):
-    codigo = int(input("Insira o codigo do livro que você deseja pegar emprestado: "))
-    
+def emprestimo_revista(revistas, emprestimos, usuario):
+    codigo = int(input("Insira o codigo da revista que você deseja pegar emprestado: "))
+
     for revista in revistas:
-        if codigo == revista['codigo']:
-            if revista['quantidade'] > 0:
-                revista['quantidade'] -= 1
-                emprestimos.append(revista.copy())
-                
-                praso = "7 dias"
-                print(f"Você pegou emprestado {revista['titulo']} e tem {praso} para devolver")
+        if codigo == revista["codigo"]:
+            if revista["quantidade"] > 0:
+                revista["quantidade"] -= 1
+
+                emprestimos.append({
+                    "usuario": usuario["email"],
+                    "tipo": "revista",
+                    "codigo": revista["codigo"],
+                    "titulo": revista["titulo"]
+                })
+
+                print(f"Você pegou emprestado {revista['titulo']} e tem 7 dias para devolver")
                 return
+
             else:
-                print("Não ha exemplares desse livro")
+                print("Não há exemplares dessa revista")
                 return
 
-    print("livro não encontrado")
+    print("Revista não encontrada")
 
-def emprestimo_artigo(artigos, emprestimos):
-    codigo = int(input("Insira o codigo do livro que você deseja pegar emprestado: "))
-        
+
+def emprestimo_artigo(artigos, emprestimos, usuario):
+    codigo = int(input("Insira o codigo do artigo que você deseja pegar emprestado: "))
+
     for artigo in artigos:
-        if codigo == artigo['codigo']:
-            if artigo['quantidade'] > 0:
-                artigo['quantidade'] -= 1
-                emprestimos.append(artigo.copy())
-                
-                praso = "7 dias"
-                print(f"Você pegou emprestado {artigo['titulo']} e tem {praso} para devolver")
-                return
-            else:
-                print("Não ha exemplares desse livro")
+        if codigo == artigo["codigo"]:
+            if artigo["quantidade"] > 0:
+                artigo["quantidade"] -= 1
+
+                emprestimos.append({
+                    "usuario": usuario["email"],
+                    "tipo": "artigo",
+                    "codigo": artigo["codigo"],
+                    "titulo": artigo["titulo"]
+                })
+
+                print(f"Você pegou emprestado {artigo['titulo']} e tem 7 dias para devolver")
                 return
 
-    print("livro não encontrado")
+            else:
+                print("Não há exemplares desse artigo")
+                return
+
+    print("Artigo não encontrado")
 
 
 def devolucao(emprestimos):
@@ -304,6 +340,7 @@ def mostrar_usuarios(usuarios):
     for usuario in usuarios:
         print(
             f"Email: {usuario["email"]:<25}"
+            f"Nome: {usuario["nome"]:<25}"
             f"Senha: {usuario["senha"]}"
         )
 
@@ -356,7 +393,30 @@ def consultar_acervo(livros,revistas,artigos):
     limpar_terminal()
 
 def relatorio():
-    pass
+    while True:
+        alternativa = input("Você deseja ver seu relatorio de emprestimo(s/n): ").lower()
+        limpar_terminal()
+
+        if alternativa == "s" or alternativa == "sim":
+            senha = input("Insira sua senha: ")
+
+            for usuario in usuarios:
+                if senha == usuario["senha"]:
+
+                    print("RELATÓRIO DE EMPRÉSTIMO")
+                    print(f"Nome: {usuario['nome']}")
+                    print(f"Email: {usuario['email']}")
+
+                    for item in emprestimos:
+                        if item["usuario"] == usuario["email"]:
+                            print(f"Empréstimo: {item['titulo']}")
+
+        elif alternativa == "n" or alternativa == "não" or alternativa == "nao":
+            limpar_terminal()
+            break
+
+        else:
+            print("Insira s ou n")
 
 while True:
     print("""
