@@ -147,7 +147,7 @@ def cadastrar_artigo():
 
 def cadastrar_usuarios(usuarios):
     while True:
-        alternativa = input("Você deseja cadastrar um novo usuario(s/n): ").lower()
+        alternativa = input("Você deseja cadastrar um novo usuário(s/n): ").lower()
         limpar_terminal()
 
         if alternativa == "s" or alternativa == "sim":
