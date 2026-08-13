@@ -59,7 +59,7 @@ def limpar_terminal():
 
 def cadastrar_livros():
     while True:
-        escolha = input("você deseja cadastrar um livro novo(s/n): ").lower()
+        escolha = input("Você deseja cadastrar um livro novo(s/n): ").lower()
         limpar_terminal()
 
         if escolha == "s" or escolha == "sim":
