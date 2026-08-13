@@ -63,10 +63,10 @@ def cadastrar_livros():
         limpar_terminal()
 
         if escolha == "s" or escolha == "sim":
-            titulo = input("Insira o titulo do livro: ")
+            titulo = input("Insira o título do livro: ")
             autor = input("Insira o nome do autor do livro: ")
             genero = input("Insira o gênero literario: ")
-            codigo = input("Insira o codigo ISBN do livro: ")
+            codigo = input("Insira o código ISBN do livro: ")
             quantidade = int(input("Insira a quantidade de livros: "))
             
             novo_livro = {
@@ -87,7 +87,7 @@ def cadastrar_livros():
 
 def cadastrar_revista():
     while True:
-            escolha = input("você deseja cadastrar uma revista nova(s/n): ").lower()
+            escolha = input("Você deseja cadastrar uma revista nova(s/n): ").lower()
             limpar_terminal()
     
             if escolha == "s" or escolha == "sim":
@@ -187,9 +187,9 @@ def emprestimo():
 
             if usuario_encontrado:
                 print("""
-                    1 - Emprestimo de livros
-                    2 - Emprestimo de revistas
-                    3 - Emprestimo de artigos
+                    1 - Empréstimo de livros
+                    2 - Empréstimo de revistas
+                    3 - Empréstimo de artigos
                 """)
 
                 opcao = input("Insira uma opção: ")
@@ -270,7 +270,7 @@ def emprestimo_revista(revistas, emprestimos, usuario):
 
 
 def emprestimo_artigo(artigos, emprestimos, usuario):
-    codigo = int(input("Insira o codigo do artigo que você deseja pegar emprestado: "))
+    codigo = int(input("Insira o código do artigo que você deseja pegar emprestado: "))
 
     for artigo in artigos:
         if codigo == artigo["codigo"]:
@@ -300,7 +300,7 @@ def devolucao(emprestimos):
         limpar_terminal()
 
         if alternativa == "s" or alternativa == "sim":
-            codigo = input("Insira o codigo do item que você deseja devolver: ")
+            codigo = input("Insira o código do item que você deseja devolver: ")
             senha = input("Insira sua senha: ")
 
             for usuario in usuarios:
@@ -394,7 +394,7 @@ def consultar_acervo(livros,revistas,artigos):
 
 def relatorio():
     while True:
-        alternativa = input("Você deseja ver seu relatorio de emprestimo(s/n): ").lower()
+        alternativa = input("Você deseja ver seu relatório de emprestimo(s/n): ").lower()
         limpar_terminal()
 
         if alternativa == "s" or alternativa == "sim":
@@ -421,11 +421,11 @@ def relatorio():
 def busca():
         limpar_terminal()
 
-        escolha = input("Voce quer bucar um livro(1), uma revista(2) ou um artigo(3): ")
+        escolha = input("Você quer bucar um livro(1), uma revista(2) ou um artigo(3): ")
         if escolha == "1":
             limpar_terminal()
 
-            codigo = input("Insira o codigo do livro que você deseja buscar: ")
+            codigo = input("Insira o código do livro que você deseja buscar: ")
 
             for livro in livros:
                         if codigo == livro['codigo']:
@@ -444,7 +444,7 @@ def busca():
         elif escolha == "2":
             limpar_terminal()
 
-            codigo = int(input("Insira o codigo da revista que você deseja buscar: "))
+            codigo = int(input("Insira o código da revista que você deseja buscar: "))
 
             for revista in revistas:
                         if codigo == revista['codigo']:
@@ -461,7 +461,7 @@ def busca():
                             limpar_terminal()
         elif escolha == "3":
             limpar_terminal()
-            codigo = int(input("Insira o codigo do artigo que você deseja buscar: "))
+            codigo = int(input("Insira o código do artigo que você deseja buscar: "))
 
             for artigo in artigos:
                 if codigo == artigo['codigo']:
@@ -485,12 +485,12 @@ while True:
     1  - Cadastrar livro
     2  - Cadastrar artigo científico
     3  - Cadastrar revista
-    4  - Cadastrar usuario
-    5  - Emprestimo 
-    6  - devolução
+    4  - Cadastrar usuário
+    5  - Empréstimo 
+    6  - Devolução
     7  - Consultar acervo da biblioteca
-    8  - Consultar usuarios cadastrados
-    9  - Relatorio de empréstimo
+    8  - Consultar usuários cadastrados
+    9  - Relatório de empréstimo
     10 - Busca
     0  - Fechar sistema
 """)
