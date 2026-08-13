@@ -418,6 +418,60 @@ def relatorio():
         else:
             print("Insira s ou n")
 
+def busca():
+        escolha = input("Voce quer bucar um livro(1), uma revista(2) ou um artigo(3): ")
+        if escolha == "1":
+            codigo1 = input("Insira o codigo do livro que você deseja buscar: ")
+
+            for livro in livros:
+                        if codigo1 == livro['codigo']:
+                            print(
+                                f"° Título: {livro['titulo']:<25}"
+                                f"Autor(a): {livro['autor']:<30}"
+                                f"Gênero Literario: {livro['genero']:<20}"
+                                f"Codigo ISBN: {livro['codigo']:<27}"
+                                f"Quantidade: {livro['quantidade']}"
+                            )
+                            print()
+                            input("Pressione Enter para voltar para o menu")
+                            limpar_terminal()
+
+
+        elif escolha == "2":
+            codigo2 = int(input("Insira o codigo da revista que você deseja buscar: "))
+
+            for revista in revistas:
+                        if codigo2 == revista['codigo']:
+                            print(
+                                f"° ID: {revista['codigo']:<15}"
+                                f"Titulo: {revista['titulo']:<30}"
+                                f"Edição: {revista['edicao']:<20}"
+                                f"Publicação: {revista['publicacao']:<20}"
+                                f"Editora: {revista['editora']:<20}"
+                                f"Quantidade: {revista['quantidade']}"
+                            )
+                            print()
+                            input("Pressione Enter para voltar para o menu")
+                            limpar_terminal()
+        elif escolha == "3":
+            codigo3 = int(input("Insira o codigo do artigo que você deseja buscar: "))
+
+            for artigo in artigos:
+                if codigo3 == artigo['codigo']:
+                    print(
+                        f"° ID: {artigo['codigo']:<12}"
+                        f"Titulo: {artigo['titulo']:<60}"
+                        f"Autores: {artigo['autor']:<45}"
+                        f"Palavras-chaves: {artigo['palavras_chave']:<37}"
+                        f"Publicação: {artigo['publicacao']:<10}"
+                        f"Quantidade: {artigo['quantidade']}"
+                    )
+                    print()
+                    input("Pressione Enter para voltar para o menu")
+                    limpar_terminal()
+        else:
+            print("Insira uma das opções")
+
 while True:
     print("""
                 -=-=-=-=MENU=-=-=-=-
@@ -430,6 +484,7 @@ while True:
         7 - Consultar acervo da biblioteca
         8 - Consultar usuarios cadastrados
         9 - Relatorio de empréstimo
+        10 - Busca
         0 - Fechar sistema
     """)
 
@@ -453,6 +508,8 @@ while True:
         mostrar_usuarios(usuarios)
     elif opcao == "9":
         relatorio()
+    elif opcao == "10":
+        busca()
     elif opcao == "0":
         limpar_terminal()
         break
