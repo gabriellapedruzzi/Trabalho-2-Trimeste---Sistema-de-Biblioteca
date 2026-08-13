@@ -419,12 +419,16 @@ def relatorio():
             print("Insira s ou n")
 
 def busca():
+        limpar_terminal()
+
         escolha = input("Voce quer bucar um livro(1), uma revista(2) ou um artigo(3): ")
         if escolha == "1":
-            codigo1 = input("Insira o codigo do livro que você deseja buscar: ")
+            limpar_terminal()
+
+            codigo = input("Insira o codigo do livro que você deseja buscar: ")
 
             for livro in livros:
-                        if codigo1 == livro['codigo']:
+                        if codigo == livro['codigo']:
                             print(
                                 f"° Título: {livro['titulo']:<25}"
                                 f"Autor(a): {livro['autor']:<30}"
@@ -438,10 +442,12 @@ def busca():
 
 
         elif escolha == "2":
-            codigo2 = int(input("Insira o codigo da revista que você deseja buscar: "))
+            limpar_terminal()
+
+            codigo = int(input("Insira o codigo da revista que você deseja buscar: "))
 
             for revista in revistas:
-                        if codigo2 == revista['codigo']:
+                        if codigo == revista['codigo']:
                             print(
                                 f"° ID: {revista['codigo']:<15}"
                                 f"Titulo: {revista['titulo']:<30}"
@@ -454,10 +460,11 @@ def busca():
                             input("Pressione Enter para voltar para o menu")
                             limpar_terminal()
         elif escolha == "3":
-            codigo3 = int(input("Insira o codigo do artigo que você deseja buscar: "))
+            limpar_terminal()
+            codigo = int(input("Insira o codigo do artigo que você deseja buscar: "))
 
             for artigo in artigos:
-                if codigo3 == artigo['codigo']:
+                if codigo == artigo['codigo']:
                     print(
                         f"° ID: {artigo['codigo']:<12}"
                         f"Titulo: {artigo['titulo']:<60}"
@@ -474,19 +481,19 @@ def busca():
 
 while True:
     print("""
-                -=-=-=-=MENU=-=-=-=-
-        1 - Cadastrar livro
-        2 - Cadastrar artigo científico
-        3 - Cadastrar revista
-        4 - Cadastrar usuario
-        5 - Emprestimo 
-        6 - devolução
-        7 - Consultar acervo da biblioteca
-        8 - Consultar usuarios cadastrados
-        9 - Relatorio de empréstimo
-        10 - Busca
-        0 - Fechar sistema
-    """)
+            -=-=-=-=MENU=-=-=-=-
+    1  - Cadastrar livro
+    2  - Cadastrar artigo científico
+    3  - Cadastrar revista
+    4  - Cadastrar usuario
+    5  - Emprestimo 
+    6  - devolução
+    7  - Consultar acervo da biblioteca
+    8  - Consultar usuarios cadastrados
+    9  - Relatorio de empréstimo
+    10 - Busca
+    0  - Fechar sistema
+""")
 
     opcao = input("Insira uma opção: ")
 
