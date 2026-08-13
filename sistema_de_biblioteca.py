@@ -65,7 +65,7 @@ def cadastrar_livros():
         if escolha == "s" or escolha == "sim":
             titulo = input("Insira o título do livro: ")
             autor = input("Insira o nome do autor do livro: ")
-            genero = input("Insira o gênero literario: ")
+            genero = input("Insira o gênero literário: ")
             codigo = input("Insira o código ISBN do livro: ")
             quantidade = int(input("Insira a quantidade de livros: "))
             
