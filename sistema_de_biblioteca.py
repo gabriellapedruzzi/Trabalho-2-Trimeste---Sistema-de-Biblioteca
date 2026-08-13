@@ -221,7 +221,7 @@ def emprestimo():
 
     
 def emprestimo_livro(livros, emprestimos,usuario):
-        codigo = input("Insira o codigo do livro que você deseja pegar emprestado: ")
+        codigo = input("Insira o código do livro que você deseja pegar emprestado: ")
 
         for livro in livros:
             if codigo == livro['codigo']:
@@ -239,13 +239,13 @@ def emprestimo_livro(livros, emprestimos,usuario):
                     print(f"Você pegou emprestado {livro['titulo']} e tem {praso} para devolver")
                     return
                 else:
-                    print("Não ha exemplares desse livro")
+                    print("Não há exemplares desse livro")
                     return
 
-        print("livro não encontrado")
+        print("Livro não encontrado")
 
 def emprestimo_revista(revistas, emprestimos, usuario):
-    codigo = int(input("Insira o codigo da revista que você deseja pegar emprestado: "))
+    codigo = int(input("Insira o código da revista que você deseja pegar emprestado: "))
 
     for revista in revistas:
         if codigo == revista["codigo"]:
