@@ -91,8 +91,8 @@ def cadastrar_revista():
             limpar_terminal()
     
             if escolha == "s" or escolha == "sim":
-                codigo_revista = int(input("Insira o codigo da revista: "))
-                titulo = input("Insira o titulo: ")
+                codigo_revista = int(input("Insira o código da revista: "))
+                titulo = input("Insira o título: ")
                 edicao = input("Insira a edição: ")
                 publicacao = input("Insira a data de publicação: ")
                 editora = input("Insira a editora da revista: ")
@@ -117,12 +117,12 @@ def cadastrar_revista():
 
 def cadastrar_artigo():
     while True:
-            escolha = input("você deseja cadastrar um artigo científico novo(s/n): ").lower()
+            escolha = input("Você deseja cadastrar um artigo científico novo(s/n): ").lower()
             limpar_terminal()
     
             if escolha == "s" or escolha == "sim":
-                codigo_artigo = int(input("Insira o codigo do artigo: "))
-                titulo = input("Insira o titulo do artigo: ")
+                codigo_artigo = int(input("Insira o código do artigo: "))
+                titulo = input("Insira o título do artigo: ")
                 autor = input("Insira o nome dos autores do artigo: ")
                 palavras_chave = input("Insira as palavras chaves: ")
                 publicacao = input("Insira a data de publicação: ")
