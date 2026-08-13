@@ -300,7 +300,7 @@ def devolucao(emprestimos):
         limpar_terminal()
 
         if alternativa == "s" or alternativa == "sim":
-            codigo = input("Insira o codigo do livro que você deseja devolver: ")
+            codigo = input("Insira o codigo do item que você deseja devolver: ")
             senha = input("Insira sua senha: ")
 
             for usuario in usuarios:
