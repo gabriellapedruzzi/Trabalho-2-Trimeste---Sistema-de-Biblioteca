@@ -153,7 +153,7 @@ def cadastrar_usuarios(usuarios):
         if alternativa == "s" or alternativa == "sim":
             email = input("Insira seu email: ")
             senha = input("Insira sua senha: ")
-            nome = input("Insra seu nome")
+            nome = input("Insira seu nome")
 
             novo_usuario = {
                 "email": email,
@@ -358,7 +358,7 @@ def consultar_acervo(livros,revistas,artigos):
             f"° Título: {livro['titulo']:<25}"
             f"Autor(a): {livro['autor']:<30}"
             f"Gênero Literario: {livro['genero']:<20}"
-            f"Codigo ISBN: {livro['codigo']:<27}"
+            f"Código ISBN: {livro['codigo']:<27}"
             f"Quantidade: {livro['quantidade']}"
     )
 
@@ -367,8 +367,8 @@ def consultar_acervo(livros,revistas,artigos):
     print("REVISTAS")
     for revista in revistas:
         print(
-            f"° ID: {revista['codigo']:<15}"
-            f"Titulo: {revista['titulo']:<30}"
+            f"° Código: {revista['codigo']:<15}"
+            f"Título: {revista['titulo']:<30}"
             f"Edição: {revista['edicao']:<20}"
             f"Publicação: {revista['publicacao']:<20}"
             f"Editora: {revista['editora']:<20}"
@@ -380,8 +380,8 @@ def consultar_acervo(livros,revistas,artigos):
     print("ARTIGOS CIENTÍFICOS")
     for artigo in artigos:
         print(
-            f"° ID: {artigo['codigo']:<12}"
-            f"Titulo: {artigo['titulo']:<60}"
+            f"° Código: {artigo['codigo']:<12}"
+            f"Título: {artigo['titulo']:<60}"
             f"Autores: {artigo['autor']:<45}"
             f"Palavras-chaves: {artigo['palavras_chave']:<37}"
             f"Publicação: {artigo['publicacao']:<10}"
@@ -433,7 +433,7 @@ def busca():
                                 f"° Título: {livro['titulo']:<25}"
                                 f"Autor(a): {livro['autor']:<30}"
                                 f"Gênero Literario: {livro['genero']:<20}"
-                                f"Codigo ISBN: {livro['codigo']:<27}"
+                                f"Código ISBN: {livro['codigo']:<27}"
                                 f"Quantidade: {livro['quantidade']}"
                             )
                             print()
@@ -449,8 +449,8 @@ def busca():
             for revista in revistas:
                         if codigo == revista['codigo']:
                             print(
-                                f"° ID: {revista['codigo']:<15}"
-                                f"Titulo: {revista['titulo']:<30}"
+                                f"° Código: {revista['codigo']:<15}"
+                                f"Título: {revista['titulo']:<30}"
                                 f"Edição: {revista['edicao']:<20}"
                                 f"Publicação: {revista['publicacao']:<20}"
                                 f"Editora: {revista['editora']:<20}"
@@ -466,8 +466,8 @@ def busca():
             for artigo in artigos:
                 if codigo == artigo['codigo']:
                     print(
-                        f"° ID: {artigo['codigo']:<12}"
-                        f"Titulo: {artigo['titulo']:<60}"
+                        f"° Codigo: {artigo['codigo']:<12}"
+                        f"Título: {artigo['titulo']:<60}"
                         f"Autores: {artigo['autor']:<45}"
                         f"Palavras-chaves: {artigo['palavras_chave']:<37}"
                         f"Publicação: {artigo['publicacao']:<10}"
@@ -481,7 +481,7 @@ def busca():
 
 while True:
     print("""
-            -=-=-=-=MENU=-=-=-=-
+                MENU
     1  - Cadastrar livro
     2  - Cadastrar artigo científico
     3  - Cadastrar revista
