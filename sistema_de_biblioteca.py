@@ -153,7 +153,7 @@ def cadastrar_usuarios(usuarios):
         if alternativa == "s" or alternativa == "sim":
             email = input("Insira seu email: ")
             senha = input("Insira sua senha: ")
-            nome = input("Insira seu nome")
+            nome = input("Insira seu nome: ")
 
             novo_usuario = {
                 "email": email,
@@ -235,8 +235,8 @@ def emprestimo_livro(livros, emprestimos,usuario):
                     "titulo": livro["titulo"]
                 })
                    
-                    praso = "7 dias"
-                    print(f"Você pegou emprestado {livro['titulo']} e tem {praso} para devolver")
+                    prazo = "7 dias"
+                    print(f"Você pegou emprestado {livro['titulo']} e tem {prazo} para devolver")
                     return
                 else:
                     print("Não há exemplares desse livro")
@@ -259,7 +259,9 @@ def emprestimo_revista(revistas, emprestimos, usuario):
                     "titulo": revista["titulo"]
                 })
 
-                print(f"Você pegou emprestado {revista['titulo']} e tem 7 dias para devolver")
+
+                prazo = "7 dias"
+                print(f"Você pegou emprestado {revista['titulo']} e tem {prazo} para devolver")
                 return
 
             else:
@@ -284,7 +286,9 @@ def emprestimo_artigo(artigos, emprestimos, usuario):
                     "titulo": artigo["titulo"]
                 })
 
-                print(f"Você pegou emprestado {artigo['titulo']} e tem 7 dias para devolver")
+
+                prazo = "7 dias"
+                print(f"Você pegou emprestado {artigo['titulo']} e tem {prazo} para devolver")
                 return
 
             else:
